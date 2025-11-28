@@ -405,6 +405,80 @@
             margin-bottom: 15px;
         }
 
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             .product-details {
                 grid-template-columns: 1fr;
@@ -417,6 +491,11 @@
 
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
     </style>
@@ -549,7 +628,7 @@
                 id: 6,
                 name: 'Wireless Charger',
                 price: 29.99,
-                image: 'https://charbycharge.com/shop/orbit-15w-magnetic-wireless-charger/?srsltid=AfmBOoomlYjCnSu2lPjIejTLLwob4p8PmNkhT61rU9qO6AU4PeruQTVR',
+                image: 'https://images.unsplash.com/photo-1591290619762-c588f0841daa?w=400&h=400&fit=crop',
                 rating: 4.4,
                 description: 'Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design with LED indicator and overcharge protection.',
                 features: ['Fast Charging', 'Universal Compatibility', 'LED Indicator', 'Overcharge Protection', 'Slim Design']
