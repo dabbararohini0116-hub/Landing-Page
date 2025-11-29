@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopHub - Your Online Store</title>
+    <title>Pure Nature - Organic Products</title>
     <style>
         * {
             margin: 0;
@@ -12,20 +12,22 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
+            color: #4a5568;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5f3ed 100%);
         }
 
-        /* Header & Navigation */
+        /* Header - Static */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
         nav {
@@ -34,33 +36,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            color: #6b8e23;
+            font-family: 'Georgia', serif;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             list-style: none;
         }
 
         .nav-links a {
-            color: white;
+            color: #4a5568;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
+            font-size: 1.05rem;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
+        .nav-links a:hover,
         .nav-links a.active {
-            border-bottom: 2px solid white;
+            color: #6b8e23;
         }
 
         .cart-icon {
@@ -72,7 +74,7 @@
             position: absolute;
             top: -8px;
             right: -8px;
-            background: #ff4757;
+            background: #6b8e23;
             color: white;
             border-radius: 50%;
             padding: 2px 6px;
@@ -81,63 +83,55 @@
 
         /* Landing Page */
         .landing {
-            height: 90vh;
-            background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200') center/cover;
-            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
+            padding: 120px 20px 80px;
         }
 
-        .landing::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .landing-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .landing h1 {
-            font-size: 3.5rem;
+        .landing-content h1 {
+            font-size: 4rem;
+            color: #2d3748;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
-        .landing p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+        .landing-content p {
+            font-size: 1.4rem;
+            color: #718096;
+            margin-bottom: 40px;
+            font-style: italic;
         }
 
         .explore-btn {
-            background: #667eea;
+            background: #6b8e23;
             color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 18px 50px;
+            font-size: 1.1rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: bold;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(107, 142, 35, 0.2);
         }
 
         .explore-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 40px rgba(107, 142, 35, 0.3);
+            background: #5a7a1f;
         }
 
-        /* Main Content */
+        /* Pages */
         .page {
             display: none;
-            min-height: 80vh;
+            min-height: 100vh;
+            padding-top: 100px;
         }
 
         .page.active {
@@ -147,77 +141,98 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 40px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #2d3748;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .product-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            transition: all 0.4s;
             cursor: pointer;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 320px;
             object-fit: cover;
         }
 
         .product-info {
-            padding: 20px;
+            padding: 30px;
         }
 
         .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .product-category {
+            color: #6b8e23;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
         }
 
         .product-price {
-            font-size: 1.5rem;
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: #6b8e23;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .add-to-cart-btn {
             width: 100%;
-            background: #667eea;
+            background: #6b8e23;
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
         .add-to-cart-btn:hover {
-            background: #5568d3;
+            background: #5a7a1f;
+            transform: scale(1.02);
         }
 
         /* Product Detail */
         .product-detail {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
+            gap: 60px;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
         .product-detail img {
@@ -226,29 +241,33 @@
         }
 
         .product-detail-info h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
+            color: #2d3748;
+            font-weight: 400;
         }
 
         .product-description {
-            margin: 20px 0;
-            line-height: 1.8;
-            color: #666;
+            margin: 25px 0;
+            line-height: 1.9;
+            color: #718096;
+            font-size: 1.1rem;
         }
 
         .back-btn {
-            background: #ddd;
-            color: #333;
-            padding: 10px 20px;
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 12px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 25px;
             font-size: 1rem;
+            transition: all 0.3s;
         }
 
         .back-btn:hover {
-            background: #ccc;
+            background: #cbd5e0;
         }
 
         /* About Page */
@@ -256,106 +275,116 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
         .about-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #6b8e23;
+            font-weight: 300;
         }
 
         .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #718096;
+            margin-bottom: 25px;
         }
 
         /* Contact Form */
-        .contact-form {
-            max-width: 600px;
+        .contact-section {
+            max-width: 700px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
-        .contact-form h1 {
+        .contact-section h1 {
             text-align: center;
-            color: #667eea;
-            margin-bottom: 30px;
+            color: #6b8e23;
+            margin-bottom: 40px;
+            font-weight: 300;
+            font-size: 2.5rem;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #4a5568;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: 'Georgia', serif;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #6b8e23;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
         }
 
         .submit-btn {
             width: 100%;
-            background: #667eea;
+            background: #6b8e23;
             color: white;
-            padding: 15px;
+            padding: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 1.1rem;
-            font-weight: 600;
-            transition: background 0.3s;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
         .submit-btn:hover {
-            background: #5568d3;
+            background: #5a7a1f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(107, 142, 35, 0.2);
         }
 
-        /* Cart Page */
+        /* Cart */
         .cart-items {
-            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
         .cart-item {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             background: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
         }
 
         .cart-item img {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         .cart-item-info {
@@ -363,38 +392,89 @@
         }
 
         .cart-item-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #2d3748;
         }
 
         .cart-item-price {
-            font-size: 1.2rem;
-            color: #667eea;
-            font-weight: bold;
+            font-size: 1.3rem;
+            color: #6b8e23;
+            font-weight: 600;
         }
 
         .remove-btn {
-            background: #ff4757;
+            background: #e53e3e;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 25px;
+            border-radius: 50px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #c53030;
         }
 
         .cart-total {
             text-align: right;
-            font-size: 1.8rem;
-            margin-top: 30px;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2rem;
+            margin-top: 40px;
+            font-weight: 600;
+            color: #6b8e23;
         }
 
         .empty-cart {
             text-align: center;
-            padding: 60px 20px;
-            color: #999;
+            padding: 80px 20px;
+            color: #a0aec0;
+            font-size: 1.3rem;
+        }
+
+        /* Footer - Static */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 60px 40px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #a8d08d;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            color: #cbd5e0;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #4a5568;
+            color: #cbd5e0;
         }
 
         @media (max-width: 768px) {
@@ -402,12 +482,16 @@
                 grid-template-columns: 1fr;
             }
 
-            .landing h1 {
-                font-size: 2rem;
+            .landing-content h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                padding: 0 20px;
             }
 
             .nav-links {
-                gap: 15px;
+                gap: 20px;
             }
         }
     </style>
@@ -415,13 +499,13 @@
 <body>
     <header>
         <nav>
-            <div class="logo">ShopHub</div>
+            <div class="logo">🌿 Pure Nature</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="#cart" class="nav-link cart-icon">
-                    🛒 Cart <span class="cart-count">0</span>
+                    🛒 <span class="cart-count">0</span>
                 </a></li>
             </ul>
         </nav>
@@ -430,16 +514,16 @@
     <!-- Landing Page -->
     <div class="landing" id="landing">
         <div class="landing-content">
-            <h1>Welcome to ShopHub</h1>
-            <p>Discover Amazing Products at Great Prices</p>
-            <button class="explore-btn" onclick="explorProducts()">Explore Now</button>
+            <h1>Pure & Natural</h1>
+            <p>Embrace the essence of nature with our organic products</p>
+            <button class="explore-btn" onclick="exploreProducts()">Explore Collection</button>
         </div>
     </div>
 
     <!-- Home Page -->
     <div class="page" id="home">
         <div class="container">
-            <h1 style="text-align: center; margin-bottom: 40px; color: #667eea;">Our Products</h1>
+            <h2 class="page-title">Our Organic Collection</h2>
             <div class="products-grid" id="productsGrid"></div>
         </div>
     </div>
@@ -455,11 +539,11 @@
     <div class="page" id="about">
         <div class="container">
             <div class="about-content">
-                <h1>About ShopHub</h1>
-                <p>Welcome to ShopHub, your number one source for all quality products. We're dedicated to providing you the best shopping experience, with a focus on quality, customer service, and uniqueness.</p>
-                <p>Founded in 2024, ShopHub has come a long way from its beginnings. When we first started out, our passion for providing the best products drove us to start our own business.</p>
-                <p>We now serve customers all over the world and are thrilled to be a part of the eco-friendly wing of the e-commerce industry.</p>
-                <p>We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.</p>
+                <h1>Our Story</h1>
+                <p>At Pure Nature, we believe in the power of organic living. Our journey began with a simple mission: to bring nature's finest offerings directly to your doorstep.</p>
+                <p>Every product we offer is carefully sourced from certified organic farms, ensuring the highest quality and sustainability standards.</p>
+                <p>We're committed to a healthier planet and a healthier you. Our products are free from harmful chemicals, pesticides, and artificial additives.</p>
+                <p>Join us in celebrating the beauty of natural living, one organic product at a time.</p>
             </div>
         </div>
     </div>
@@ -467,15 +551,15 @@
     <!-- Contact Page -->
     <div class="page" id="contact">
         <div class="container">
-            <div class="contact-form">
-                <h1>Contact Us</h1>
+            <div class="contact-section">
+                <h1>Get In Touch</h1>
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Your Name</label>
                         <input type="text" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">Email Address</label>
                         <input type="email" id="email" required>
                     </div>
                     <div class="form-group">
@@ -483,7 +567,7 @@
                         <input type="text" id="subject" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message">Your Message</label>
                         <textarea id="message" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
@@ -495,90 +579,128 @@
     <!-- Cart Page -->
     <div class="page" id="cart">
         <div class="container">
-            <h1 style="text-align: center; margin-bottom: 40px; color: #667eea;">Shopping Cart</h1>
+            <h2 class="page-title">Your Cart</h2>
             <div class="cart-items" id="cartItems"></div>
             <div class="cart-total" id="cartTotal"></div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Pure Nature</h3>
+                <p>Your trusted source for certified organic products. We're committed to sustainable living and natural wellness.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li>Our Products</li>
+                    <li>Sustainability</li>
+                    <li>Shipping Info</li>
+                    <li>Returns Policy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: hello@purenature.com</li>
+                    <li>Phone: (555) 123-4567</li>
+                    <li>Hours: Mon-Fri, 9am-6pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pure Nature. All rights reserved. | Organic & Sustainable</p>
+        </div>
+    </footer>
+
     <script>
-        // Products Data
         const products = [
             {
                 id: 1,
-                name: "Wireless Headphones",
-                price: 79.99,
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
-                description: "Premium wireless headphones with active noise cancellation, 30-hour battery life, and superior sound quality. Perfect for music lovers and professionals who need to focus."
+                name: "Organic Honey",
+                price: 24.99,
+                category: "Natural Sweeteners",
+                image: "https://images.unsplash.com/photo-1587049352846-4a222e784acc?w=500",
+                description: "Pure raw honey harvested from wildflower meadows. Rich in antioxidants and enzymes, this unfiltered honey retains all its natural goodness and healing properties."
             },
             {
                 id: 2,
-                name: "Smart Watch",
-                price: 199.99,
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
-                description: "Advanced fitness tracking, heart rate monitoring, GPS, and smartphone notifications. Stay connected and healthy with this sleek smartwatch."
+                name: "Lavender Essential Oil",
+                price: 18.99,
+                category: "Aromatherapy",
+                image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500",
+                description: "100% pure therapeutic grade lavender essential oil. Perfect for relaxation, sleep support, and natural skincare. Steam-distilled from organic lavender flowers."
             },
             {
                 id: 3,
-                name: "Laptop Backpack",
-                price: 49.99,
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500",
-                description: "Durable water-resistant backpack with padded laptop compartment (fits up to 17 inches), multiple pockets, and ergonomic design for all-day comfort."
+                name: "Green Tea Leaves",
+                price: 16.99,
+                category: "Organic Teas",
+                image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=500",
+                description: "Premium organic green tea leaves sourced from sustainable farms. Rich in antioxidants and naturally energizing. Perfect for daily wellness rituals."
             },
             {
                 id: 4,
-                name: "Coffee Maker",
-                price: 89.99,
-                image: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=500",
-                description: "Programmable coffee maker with 12-cup capacity, auto-brew feature, and keep-warm function. Brew the perfect cup every morning."
+                name: "Shea Butter Cream",
+                price: 22.99,
+                category: "Natural Skincare",
+                image: "https://images.unsplash.com/photo-1556228578-dd839cc201d1?w=500",
+                description: "Unrefined organic shea butter enriched with vitamin E. Deep moisturizing formula perfect for dry skin, natural and chemical-free nourishment."
             },
             {
                 id: 5,
-                name: "Yoga Mat",
-                price: 34.99,
-                image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500",
-                description: "Extra thick 6mm eco-friendly yoga mat with non-slip surface. Includes carrying strap. Perfect for yoga, pilates, and floor exercises."
+                name: "Himalayan Pink Salt",
+                price: 12.99,
+                category: "Gourmet Salts",
+                image: "https://images.unsplash.com/photo-1608305043139-30c84cbb4a52?w=500",
+                description: "Hand-mined Himalayan pink salt rich in 84 trace minerals. Perfect for cooking, bathing, and creating a balanced, mineral-rich diet."
             },
             {
                 id: 6,
-                name: "Bluetooth Speaker",
-                price: 59.99,
-                image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
-                description: "Portable waterproof speaker with 360° sound, 20-hour battery, and deep bass. Take your music anywhere with this powerful speaker."
+                name: "Coconut Oil",
+                price: 19.99,
+                category: "Natural Oils",
+                image: "https://images.unsplash.com/photo-1598511757337-fe2cafc31ba0?w=500",
+                description: "Cold-pressed virgin coconut oil for cooking, skincare, and hair care. Organic, unrefined, and packed with healthy medium-chain fatty acids."
             },
             {
                 id: 7,
-                name: "Running Shoes",
-                price: 119.99,
-                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
-                description: "Lightweight running shoes with responsive cushioning, breathable mesh upper, and durable rubber outsole. Engineered for speed and comfort."
+                name: "Herbal Tea Blend",
+                price: 14.99,
+                category: "Organic Teas",
+                image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500",
+                description: "Carefully crafted blend of chamomile, peppermint, and lemongrass. Naturally caffeine-free and perfect for evening relaxation and digestion support."
             },
             {
                 id: 8,
-                name: "Digital Camera",
-                price: 599.99,
-                image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500",
-                description: "24MP mirrorless camera with 4K video, fast autofocus, and WiFi connectivity. Capture stunning photos and videos with professional quality."
+                name: "Aloe Vera Gel",
+                price: 15.99,
+                category: "Natural Skincare",
+                image: "https://images.unsplash.com/photo-1612165408217-b933d4c2b5e0?w=500",
+                description: "Pure organic aloe vera gel extracted from fresh leaves. Soothes skin irritations, hydrates, and promotes healing. 99% pure aloe content."
             },
             {
                 id: 9,
-                name: "Gaming Mouse",
-                price: 44.99,
-                image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500",
-                description: "Ergonomic gaming mouse with 16,000 DPI sensor, RGB lighting, and 8 programmable buttons. Dominate your games with precision control."
+                name: "Turmeric Powder",
+                price: 13.99,
+                category: "Organic Spices",
+                image: "https://images.unsplash.com/photo-1615485500834-bc10199bc981?w=500",
+                description: "Premium organic turmeric powder with high curcumin content. Anti-inflammatory superfood perfect for golden milk, cooking, and wellness supplements."
             },
             {
                 id: 10,
-                name: "Desk Lamp",
-                price: 39.99,
-                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500",
-                description: "LED desk lamp with adjustable brightness, color temperature control, and USB charging port. Perfect for work and study."
+                name: "Bamboo Toothbrush Set",
+                price: 11.99,
+                category: "Eco-Friendly",
+                image: "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=500",
+                description: "Sustainable bamboo toothbrush set of 4. Biodegradable, plastic-free oral care. Soft charcoal-infused bristles for natural teeth cleaning."
             }
         ];
 
         let cart = [];
 
-        // Initialize
         function init() {
             renderProducts();
             updateCartCount();
@@ -586,13 +708,13 @@
             setupContactForm();
         }
 
-        // Render Products
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = products.map(product => `
                 <div class="product-card" onclick="viewProduct(${product.id})">
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
+                        <p class="product-category">${product.category}</p>
                         <h3 class="product-title">${product.name}</h3>
                         <p class="product-price">$${product.price}</p>
                         <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
@@ -603,7 +725,6 @@
             `).join('');
         }
 
-        // View Product Detail
         function viewProduct(id) {
             const product = products.find(p => p.id === id);
             const content = document.getElementById('productDetailContent');
@@ -613,37 +734,35 @@
             content.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
                 <div class="product-detail-info">
+                    <p class="product-category">${product.category}</p>
                     <h1>${product.name}</h1>
                     <p class="product-price">$${product.price}</p>
                     <p class="product-description">${product.description}</p>
                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
-                    <button class="back-btn" onclick="goBack()">← Back to Products</button>
+                    <button class="back-btn" onclick="goBack()">← Back to Collection</button>
                 </div>
             `;
             
             showPage('product-detail');
         }
 
-        // Add to Cart
         function addToCart(id) {
             const product = products.find(p => p.id === id);
             cart.push(product);
             updateCartCount();
-            alert(`${product.name} added to cart!`);
+            alert(`${product.name} added to your cart!`);
         }
 
-        // Update Cart Count
         function updateCartCount() {
             document.querySelector('.cart-count').textContent = cart.length;
         }
 
-        // Render Cart
         function renderCart() {
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><h2>Your cart is empty</h2></div>';
+                cartItems.innerHTML = '<div class="empty-cart"><h2>Your cart is empty</h2><p>Add some organic goodness!</p></div>';
                 cartTotal.innerHTML = '';
                 return;
             }
@@ -652,6 +771,7 @@
                 <div class="cart-item">
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-info">
+                        <p class="product-category">${item.category}</p>
                         <h3 class="cart-item-title">${item.name}</h3>
                         <p class="cart-item-price">$${item.price}</p>
                         <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
@@ -663,14 +783,12 @@
             cartTotal.innerHTML = `Total: $${total.toFixed(2)}`;
         }
 
-        // Remove from Cart
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartCount();
             renderCart();
         }
 
-        // Navigation
         function setupNavigation() {
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -687,13 +805,6 @@
                     }
                 });
             });
-
-            window.addEventListener('hashchange', () => {
-                const hash = window.location.hash.substring(1);
-                if (hash && !hash.startsWith('product-')) {
-                    showPage(hash);
-                }
-            });
         }
 
         function showPage(pageId) {
@@ -702,9 +813,10 @@
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
         }
 
-        function explorProducts() {
+        function exploreProducts() {
             window.location.hash = 'home';
             showPage('home');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -716,21 +828,15 @@
             showPage('home');
         }
 
-        // Contact Form
         function setupContactForm() {
             document.getElementById('contactForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                alert(`Thank you ${name}! Your message has been sent successfully. We'll get back to you at ${email} soon.`);
+                alert(`Thank you ${name}! We've received your message and will respond soon.`);
                 e.target.reset();
             });
         }
 
-        // Initialize on load
         init();
     </script>
 </body>
