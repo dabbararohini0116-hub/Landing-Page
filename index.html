@@ -844,7 +844,22 @@
         }
 
         function openDetailedStore() {
-            window.open('', '_blank').document.write(`
+            window.location.hash = '';
+            document.getElementById('landing').style.display = 'flex';
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            window.scrollTo(0, 0);
+        }
+
+        function openPremiumStore() {
+            const newWindow = window.open('', '_blank');
+            if (!newWindow) {
+                alert('Please allow pop-ups to view the premium collection!');
+                return;
+            }
+            newWindow.document.write(`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1320,6 +1335,7 @@
 </body>
 </html>
             `);
+            newWindow.document.close();
         }
 
         init();
