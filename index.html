@@ -44,6 +44,12 @@
             font-weight: bold;
             color: #6b8e23;
             font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -499,7 +505,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">🌿 Pure Nature</div>
+            <div class="logo" onclick="openDetailedStore()">🌿 Pure Nature</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -835,6 +841,485 @@
                 alert(`Thank you ${name}! We've received your message and will respond soon.`);
                 e.target.reset();
             });
+        }
+
+        function openDetailedStore() {
+            window.open('', '_blank').document.write(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Nature - Premium Organic Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #2d3748;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .header-content p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1600') center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(46, 125, 50, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #2e7d32;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 50px 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .products-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .showcase-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .showcase-info {
+            padding: 35px;
+        }
+
+        .showcase-category {
+            color: #2e7d32;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .showcase-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .showcase-description {
+            color: #718096;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .showcase-benefits {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .showcase-benefits li {
+            padding: 8px 0;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .showcase-benefits li::before {
+            content: '✓';
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .showcase-price {
+            font-size: 2rem;
+            color: #2e7d32;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .shop-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .shop-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        }
+
+        .testimonials {
+            background: white;
+            padding: 80px 40px;
+            border-radius: 25px;
+            margin-bottom: 80px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2e7d32;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            padding: 35px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            color: white;
+            padding: 60px 40px 30px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🌿 PURE NATURE</h1>
+            <p>Premium Organic Living - Certified Excellence</p>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h2>Experience Nature's Finest</h2>
+            <p>Discover our exclusive collection of premium organic products, carefully curated for those who appreciate quality, sustainability, and natural wellness.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Why Choose Pure Nature?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>100% Organic</h3>
+                <p>All our products are certified organic, sourced directly from sustainable farms committed to ecological farming practices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔬</div>
+                <h3>Lab Tested</h3>
+                <p>Every product undergoes rigorous testing to ensure purity, potency, and safety. Quality you can trust.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Eco-Friendly</h3>
+                <p>Sustainable packaging, carbon-neutral shipping, and a commitment to protecting our planet for future generations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💚</div>
+                <h3>Ethical Sourcing</h3>
+                <p>Fair trade practices, supporting local farmers, and ensuring ethical treatment throughout our supply chain.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Featured Premium Products</h2>
+        
+        <div class="products-showcase">
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600" alt="Premium Manuka Honey">
+                <div class="showcase-info">
+                    <div class="showcase-category">Premium Sweeteners</div>
+                    <h3 class="showcase-title">Manuka Honey UMF 15+</h3>
+                    <p class="showcase-description">Rare New Zealand Manuka honey with certified UMF 15+ rating. Powerful antibacterial properties and rich, smooth flavor.</p>
+                    <ul class="showcase-benefits">
+                        <li>Authentic UMF Certification</li>
+                        <li>Raw & Unprocessed</li>
+                        <li>Supports Immune Health</li>
+                        <li>Natural Wound Healing</li>
+                    </ul>
+                    <div class="showcase-price">$49.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600" alt="Rose Essential Oil">
+                <div class="showcase-info">
+                    <div class="showcase-category">Luxury Aromatherapy</div>
+                    <h3 class="showcase-title">Bulgarian Rose Otto Oil</h3>
+                    <p class="showcase-description">The queen of essential oils. Steam-distilled from 60,000 rose petals. Uplifting, romantic, and therapeutically powerful.</p>
+                    <ul class="showcase-benefits">
+                        <li>100% Pure Rose Otto</li>
+                        <li>Anti-aging Properties</li>
+                        <li>Emotional Balance</li>
+                        <li>Luxury Skincare</li>
+                    </ul>
+                    <div class="showcase-price">$79.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600" alt="Ceremonial Matcha">
+                <div class="showcase-info">
+                    <div class="showcase-category">Premium Tea</div>
+                    <h3 class="showcase-title">Ceremonial Grade Matcha</h3>
+                    <p class="showcase-description">First harvest Japanese matcha from Uji, Kyoto. Vibrant green color, smooth umami flavor, and sustained energy.</p>
+                    <ul class="showcase-benefits">
+                        <li>First Harvest Grade</li>
+                        <li>High L-Theanine Content</li>
+                        <li>Rich in Antioxidants</li>
+                        <li>Calm Energy Boost</li>
+                    </ul>
+                    <div class="showcase-price">$39.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600" alt="Serum Collection">
+                <div class="showcase-info">
+                    <div class="showcase-category">Natural Beauty</div>
+                    <h3 class="showcase-title">Vitamin C Serum</h3>
+                    <p class="showcase-description">Potent 20% vitamin C formula with ferulic acid and hyaluronic acid. Brightens, firms, and protects your skin naturally.</p>
+                    <ul class="showcase-benefits">
+                        <li>Clinical Strength Formula</li>
+                        <li>Brightens Dark Spots</li>
+                        <li>Boosts Collagen</li>
+                        <li>UV Protection Support</li>
+                    </ul>
+                    <div class="showcase-price">$54.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1505253304499-671c55fb57fe?w=600" alt="Superfoods">
+                <div class="showcase-info">
+                    <div class="showcase-category">Superfoods</div>
+                    <h3 class="showcase-title">Organic Spirulina Powder</h3>
+                    <p class="showcase-description">Premium Hawaiian spirulina grown in pure mineral water. Complete protein source with 60+ vitamins and minerals.</p>
+                    <ul class="showcase-benefits">
+                        <li>Complete Plant Protein</li>
+                        <li>Energy & Vitality</li>
+                        <li>Detoxification Support</li>
+                        <li>Immune Booster</li>
+                    </ul>
+                    <div class="showcase-price">$34.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600" alt="CBD Oil">
+                <div class="showcase-info">
+                    <div class="showcase-category">Wellness</div>
+                    <h3 class="showcase-title">Full Spectrum CBD Oil</h3>
+                    <p class="showcase-description">Organically grown hemp extract with 1500mg CBD. Third-party tested for purity. Natural stress relief and relaxation.</p>
+                    <ul class="showcase-benefits">
+                        <li>Full Spectrum Extract</li>
+                        <li>Lab Tested Purity</li>
+                        <li>Natural Stress Relief</li>
+                        <li>Sleep Support</li>
+                    </ul>
+                    <div class="showcase-price">$89.99</div>
+                    <button class="shop-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The quality is exceptional! I've tried many organic brands, but Pure Nature stands out. The Manuka honey has become a staple in my wellness routine."</p>
+                    <p class="testimonial-author">— Sarah M., Wellness Coach</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finally found a company that truly cares about sustainability and quality. Their essential oils are the purest I've ever used."</p>
+                    <p class="testimonial-author">— David L., Aromatherapist</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Pure Nature has transformed my skincare routine. Everything is natural, effective, and ethically sourced. I couldn't be happier!"</p>
+                    <p class="testimonial-author">— Emma R., Skincare Enthusiast</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🌿 Pure Nature - Where Quality Meets Nature</p>
+        <p style="margin-top: 15px; opacity: 0.8;">Certified Organic | Sustainably Sourced | Lab Tested</p>
+    </footer>
+</body>
+</html>
+            `);
         }
 
         init();
