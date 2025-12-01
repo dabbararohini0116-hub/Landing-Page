@@ -186,10 +186,29 @@ nav a.active {
 }
 
 .product-card .price {
-    padding: 5px 20px 20px;
+    padding: 5px 20px 10px;
     color: #00b894;
     font-size: 1.4rem;
     font-weight: bold;
+}
+
+.add-to-cart-mini {
+    width: calc(100% - 40px);
+    margin: 0 20px 20px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.add-to-cart-mini:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,184,148,0.3);
 }
 
 /* Benefits Section */
