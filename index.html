@@ -3,80 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothify - Fashion Store</title>
+    <title>Clothify - Your Fashion Destination</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">CLOTHIFY</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="cart-icon">
-                🛒
-                <span class="cart-count" id="cartCount">0</span>
+        <div class="container">
+            <div class="logo">
+                <h1>Clothify</h1>
             </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to Clothify</h1>
-        <p>Discover Your Perfect Style</p>
-        <a href="products.html" class="btn">Explore Now →</a>
-    </section>
-
-    <!-- Featured Products -->
-    <div class="container">
-        <h2 class="section-title">Featured Products</h2>
-        <div class="products-grid" id="featuredProducts"></div>
-    </div>
-
-    <!-- Product Detail Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div id="productDetailContent"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Clothify</h3>
-                <p>Your trusted fashion partner for quality clothing and accessories.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
+            <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="products.html">Products</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p>Email: info@clothify.com</p>
-                <p>Phone: +1 234 567 8900</p>
-                <p>Address: 123 Fashion Street, NY 10001</p>
+            </nav>
+            <div class="cart-icon">
+                <span>🛒</span>
+                <span class="cart-count">0</span>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Clothify. All rights reserved.</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Clothify</h2>
+            <p>Discover the latest trends in fashion</p>
+            <button class="cta-button">Explore Now</button>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Collection</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="T-Shirt">
+                    <h3>Classic T-Shirt</h3>
+                    <p class="price">$29.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400" alt="Jeans">
+                    <h3>Denim Jeans</h3>
+                    <p class="price">$59.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400" alt="Jacket">
+                    <h3>Leather Jacket</h3>
+                    <p class="price">$129.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400" alt="Dress">
+                    <h3>Summer Dress</h3>
+                    <p class="price">$49.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Clothify</h3>
+                    <p>Your one-stop destination for fashionable clothing</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@clothify.com</p>
+                    <p>Phone: +1 234 567 8900</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <span>📘</span>
+                        <span>📷</span>
+                        <span>🐦</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Clothify. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Render featured products (first 8)
-        renderProducts('featuredProducts', products.slice(0, 8));
-    </script>
 </body>
 </html>
