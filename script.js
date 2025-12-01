@@ -197,7 +197,8 @@ function loadProducts() {
                 <div class="organic-badge">🌱 Certified Organic</div>
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
-                <p class="price">$${product.price.toFixed(2)}</p>
+                <p class="price">${product.price.toFixed(2)}</p>
+                <button class="add-to-cart-mini" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart 🛒</button>
             `;
             
             productGrid.appendChild(productCard);
