@@ -162,8 +162,19 @@ const products = [
     }
 ];
 
-// Cart functionality
+// Cart functionality with localStorage
 let cart = [];
+
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('organicLifeCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    }
+}
+
+function saveCart() {
+    localStorage.setItem('organicLifeCart', JSON.stringify(cart));
+}
 
 function updateCartCount() {
     const cartCount = document.querySelector('.cart-count');
@@ -176,9 +187,33 @@ function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
         cart.push(product);
+        saveCart();
         updateCartCount();
-        alert(`${product.name} added to cart!`);
+        
+        // Show a nicer notification
+        showNotification(`${product.name} added to cart!`);
     }
+}
+
+function showNotification(message) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Hide and remove notification
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
 }
 
 // Load products on products page
@@ -197,7 +232,7 @@ function loadProducts() {
                 <div class="organic-badge">🌱 Certified Organic</div>
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
-                <p class="price">${product.price.toFixed(2)}</p>
+                <p class="price">$${product.price.toFixed(2)}</p>
                 <button class="add-to-cart-mini" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart 🛒</button>
             `;
             
@@ -245,12 +280,26 @@ function loadProductDetail() {
                         </div>
                     </div>
                     
-                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart 🛒</button>
+                    <button class="add-to-cart-btn" onclick="addToCartWithQuantity(${product.id})">Add to Cart 🛒</button>
                 </div>
             `;
         } else {
             productDetail.innerHTML = '<p>Product not found</p>';
         }
+    }
+}
+
+function addToCartWithQuantity(productId) {
+    const quantity = parseInt(document.querySelector('.size-btn.active').textContent);
+    const product = products.find(p => p.id === productId);
+    
+    if (product) {
+        for (let i = 0; i < quantity; i++) {
+            cart.push(product);
+        }
+        saveCart();
+        updateCartCount();
+        showNotification(`${quantity} x ${product.name} added to cart!`);
     }
 }
 
@@ -277,9 +326,19 @@ function handleSubmit() {
     }
 }
 
-// Initialize on page load
+// Make cart icon clickable
 document.addEventListener('DOMContentLoaded', function() {
+    loadCartFromStorage();
     loadProducts();
     loadProductDetail();
     updateCartCount();
+    
+    // Make cart icon clickable on all pages
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon && !cartIcon.onclick) {
+        cartIcon.style.cursor = 'pointer';
+        cartIcon.onclick = () => {
+            window.location.href = 'cart.html';
+        };
+    }
 });
